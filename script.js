@@ -92,11 +92,18 @@
     /* =========================================================
        3. Shared animation loop (throttled when tab hidden)
     ========================================================= */
+    let rainFrame = 0;
+
     function loop() {
         requestAnimationFrame(loop);
         if (tabHidden) return;
-        drawRain();
-        if (!prefersReducedMotion) renderThree();
+
+        if (++rainFrame % 2 === 0) {
+            drawRain();
+        }
+        if (!prefersReducedMotion) {
+            renderThree();
+        }
     }
 
     /* =========================================================
