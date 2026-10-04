@@ -114,7 +114,7 @@
         if (!el) return;
         const phrases = [
             'Aspiring Full-Stack Developer',
-            'The Odin Project apprentice',
+            'Junior Front-End Developer',
             'HTML / CSS / JavaScript',
             'Always learning...'
         ];
