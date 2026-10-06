@@ -9,12 +9,13 @@
        1. Matrix digital rain (2D canvas)
     ========================================================= */
     const rain = document.getElementById('rain');
-    const rctx = rain.getContext('2d');
+    const rctx = rain ? rain.getContext('2d') : null;
     const glyphs = 'アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEFｦｧｨｩｪ<>[]{}=+*'.split('');
     let columns = [];
     const fontSize = 16;
 
     function initRain() {
+        if (!rctx) return;
         rain.width = window.innerWidth;
         rain.height = window.innerHeight;
         const count = Math.floor(rain.width / fontSize);
@@ -22,6 +23,7 @@
     }
 
     function drawRain() {
+        if (!rctx) return;
         rctx.fillStyle = 'rgba(0, 6, 0, 0.08)';
         rctx.fillRect(0, 0, rain.width, rain.height);
         rctx.font = fontSize + 'px monospace';
@@ -47,32 +49,38 @@
     function initThree() {
         if (!hasThree) return;
         const canvas = document.getElementById('scene');
-        renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        if (!canvas) return;
+        try {
+            renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setSize(window.innerWidth, window.innerHeight);
 
-        scene3d = new THREE.Scene();
-        camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-        camera.position.z = 6;
+            scene3d = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+            camera.position.z = 6;
 
-        // Central glowing wireframe object
-        const geo = new THREE.IcosahedronGeometry(2, 1);
-        const wire = new THREE.WireframeGeometry(geo);
-        mesh = new THREE.LineSegments(wire, new THREE.LineBasicMaterial({
-            color: 0x00ff41, transparent: true, opacity: 0.55
-        }));
-        scene3d.add(mesh);
+            // Central glowing wireframe object
+            const geo = new THREE.IcosahedronGeometry(2, 1);
+            const wire = new THREE.WireframeGeometry(geo);
+            mesh = new THREE.LineSegments(wire, new THREE.LineBasicMaterial({
+                color: 0x00ff41, transparent: true, opacity: 0.55
+            }));
+            scene3d.add(mesh);
 
-        // Floating particle field for depth
-        const pCount = 400;
-        const positions = new Float32Array(pCount * 3);
-        for (let i = 0; i < pCount * 3; i++) positions[i] = (Math.random() - 0.5) * 30;
-        const pGeo = new THREE.BufferGeometry();
-        pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-        particles = new THREE.Points(pGeo, new THREE.PointsMaterial({
-            color: 0x00b32d, size: 0.06, transparent: true, opacity: 0.7
-        }));
-        scene3d.add(particles);
+            // Floating particle field for depth
+            const pCount = 400;
+            const positions = new Float32Array(pCount * 3);
+            for (let i = 0; i < pCount * 3; i++) positions[i] = (Math.random() - 0.5) * 30;
+            const pGeo = new THREE.BufferGeometry();
+            pGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            particles = new THREE.Points(pGeo, new THREE.PointsMaterial({
+                color: 0x00b32d, size: 0.06, transparent: true, opacity: 0.7
+            }));
+            scene3d.add(particles);
+        } catch (err) {
+            // WebGL unavailable or blocked: fall back to the rain background only.
+            renderer = null;
+        }
     }
 
     function renderThree() {
