@@ -282,11 +282,17 @@
 
     window.addEventListener('resize', onResize);
     initRain();
-    initThree();
     typewriter();
     initScroll();
     initTilt();
     initUI();
     initSurprise();
     loop();
+    // Defer the WebGL scene so it doesn't block first paint or inflate TBT;
+    // the render loop no-ops until the renderer exists.
+    if ('requestIdleCallback' in window) {
+        requestIdleCallback(initThree, { timeout: 2000 });
+    } else {
+        setTimeout(initThree, 1200);
+    }
 })();
