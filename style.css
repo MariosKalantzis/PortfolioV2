@@ -287,6 +287,7 @@ section.visible {
     display: block;
     width: 100%;
     max-width: 300px;
+    height: auto;
     border-radius: 8px;
     filter: grayscale(0.3) brightness(1.05) contrast(1.05) sepia(0.3) hue-rotate(60deg);
     transition: filter 0.3s;
