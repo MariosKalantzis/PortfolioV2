@@ -196,6 +196,9 @@ section.visible {
     gap: 48px;
     min-height: 100vh;
     padding-top: 120px;
+    /* Above-the-fold: render immediately (no scroll-reveal) for a fast LCP */
+    opacity: 1;
+    transform: none;
 }
 
 .prompt-line {
