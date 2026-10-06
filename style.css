@@ -251,6 +251,30 @@ section.visible {
     text-shadow: none;
 }
 
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.btn-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border: 1px solid var(--green-dim);
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.25s;
+}
+
+.btn-cv:hover {
+    border-color: var(--green);
+    color: var(--green);
+    box-shadow: var(--glow);
+}
+
 .avatar-frame {
     padding: 6px;
     border: 1px solid var(--green-dark);
@@ -290,12 +314,14 @@ section.visible {
 
 .glitch::before {
     color: #00fff2;
-    animation: glitch-1 2.5s infinite linear alternate-reverse;
+    opacity: 0.4;
+    animation: glitch-1 3.5s infinite linear alternate-reverse;
 }
 
 .glitch::after {
     color: #ff003c;
-    animation: glitch-2 3s infinite linear alternate-reverse;
+    opacity: 0.4;
+    animation: glitch-2 4s infinite linear alternate-reverse;
 }
 
 @keyframes glitch-1 {
@@ -512,6 +538,10 @@ section.visible {
     color: var(--text);
 }
 
+.quote blockquote {
+    margin: 0;
+}
+
 .quote .author {
     margin-top: 16px;
     color: var(--green-dim);
@@ -526,7 +556,21 @@ section.visible {
 
 .contact-intro {
     color: #9fdca8;
+    margin-bottom: 20px;
+}
+
+.contact-email {
+    display: inline-block;
     margin-bottom: 32px;
+    color: var(--green);
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: 1px;
+    transition: text-shadow 0.25s;
+}
+
+.contact-email:hover {
+    text-shadow: var(--glow);
 }
 
 .social-links {
@@ -569,6 +613,25 @@ footer {
 
 .hint {
     opacity: 0.6;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.25s;
+}
+
+.hint:hover {
+    opacity: 1;
+}
+
+/* ---------- Focus states (keyboard accessibility) ---------- */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 3px;
+    border-radius: 2px;
 }
 
 kbd {

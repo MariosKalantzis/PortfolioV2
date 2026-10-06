@@ -113,9 +113,9 @@
         const el = document.getElementById('typewriter');
         if (!el) return;
         const phrases = [
-            'Aspiring Full-Stack Developer',
             'Junior Front-End Developer',
             'HTML / CSS / JavaScript',
+            'React & Next.js',
             'Always learning...'
         ];
         if (prefersReducedMotion) { el.textContent = phrases[0]; return; }
@@ -154,8 +154,6 @@
             progress.style.width = (pct * 100) + '%';
             scrollFactor = pct;
             backToTop.classList.toggle('show', window.scrollY > 400);
-            // reveal surprise when at the very bottom
-            if (pct > 0.985) openTerminal();
         }, { passive: true });
     }
 
@@ -250,6 +248,10 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeTerminal();
         });
+
+        // Discoverable trigger in the footer
+        const trigger = document.getElementById('terminalTrigger');
+        if (trigger) trigger.addEventListener('click', () => { terminalShown = false; openTerminal(); });
 
         // Konami code
         const konami = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
