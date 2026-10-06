@@ -413,6 +413,78 @@ section.visible {
     transform: scale(1.15);
 }
 
+/* ---------- Experience ---------- */
+.exp-timeline {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.exp-item {
+    border: 1px solid var(--green-dark);
+    border-left: 3px solid var(--green);
+    border-radius: 8px;
+    padding: 24px 28px;
+    background: rgba(0, 16, 0, 0.45);
+}
+
+.exp-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.exp-head h3 {
+    color: var(--green);
+    font-size: 20px;
+}
+
+.exp-company {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: normal;
+}
+
+.exp-company a {
+    color: var(--green-dim);
+    text-decoration: none;
+    transition: color 0.25s, text-shadow 0.25s;
+}
+
+.exp-company a:hover {
+    color: var(--green);
+    text-shadow: var(--glow);
+}
+
+.exp-period {
+    color: var(--green-dim);
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.exp-points {
+    list-style: none;
+    margin-bottom: 18px;
+}
+
+.exp-points li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    color: #9fdca8;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.exp-points li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+}
+
 /* ---------- Projects ---------- */
 .projects-container {
     display: grid;
