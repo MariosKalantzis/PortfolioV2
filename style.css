@@ -27,6 +27,16 @@ body {
     line-height: 1.5;
 }
 
+/* ---------- Inline SVG icons ---------- */
+.icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: -0.125em;
+    flex-shrink: 0;
+}
+
 /* ---------- Background canvases ---------- */
 #rain,
 #scene {
@@ -390,8 +400,9 @@ section.visible {
     cursor: default;
 }
 
-.skillset i {
-    font-size: 44px;
+.skillset .icon {
+    width: 44px;
+    height: 44px;
     color: var(--green-dim);
     margin-bottom: 12px;
     transition: color 0.25s, transform 0.25s;
@@ -408,7 +419,7 @@ section.visible {
     box-shadow: var(--glow);
 }
 
-.skillset:hover i {
+.skillset:hover .icon {
     color: var(--green);
     transform: scale(1.15);
 }
@@ -845,8 +856,9 @@ kbd {
         height: 110px;
     }
 
-    .skillset i {
-        font-size: 34px;
+    .skillset .icon {
+        width: 34px;
+        height: 34px;
     }
 
     section {
