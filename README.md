@@ -4,7 +4,7 @@ A Matrix-inspired, animated personal portfolio built with vanilla **HTML, CSS an
 
 **Live:** https://marioskalantzis.github.io/PortfolioV2/
 
-![Performance](https://img.shields.io/badge/Lighthouse_Performance-96–98-brightgreen)
+![Performance](https://img.shields.io/badge/Lighthouse_Performance-98-brightgreen)
 ![Accessibility](https://img.shields.io/badge/Accessibility-100-brightgreen)
 ![Best Practices](https://img.shields.io/badge/Best_Practices-100-brightgreen)
 ![SEO](https://img.shields.io/badge/SEO-100-brightgreen)
